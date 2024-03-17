@@ -1,0 +1,120 @@
+@import '../../static/variables/_variables.scss';
+
+.header {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+}
+
+.menu {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  background-color: $header-background-color;
+  color: $light-text-color;
+}
+
+.button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border: none;
+  outline: none;
+  color: $light-text-color;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.categories {
+  background-color: $header-categories-bg-color;
+  height: 100%;
+  padding: 30px 50px;
+}
+
+.vk {
+  padding: 10px 0px;
+  height: 70%;
+  transition: background-color .5s;
+  border-radius: 5px;
+  text-align: left;
+  font-weight: 600;
+  border: 1px solid #ffffff;
+  background: none;
+  &:hover {
+    background-color: $header-vk-bg-color-hover;
+  }
+}
+
+.vk_title {
+  width: 50%;
+}
+
+.new_ad {
+  padding: 10px 0px;
+  height: 70%;
+  background-color: $green-bg-color;
+  transition: background-color .5s;
+  border-radius: 5px;
+  text-align: left;
+  font-weight: 600;
+  &:hover {
+    background-color: $green-bg-color-hover;
+  }
+}
+
+.new_ad_title {
+  width: 50%;
+}
+
+.catalog {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 50px;
+  width: 100%;
+  color: $light-text-color;
+  background-color: $header-categories-bg-color;
+  padding: 30px 0px;
+}
+
+.catalog_col {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 15%;
+  height: 100%;
+  &:nth-child(2) {
+    border-left: #222222 1px solid;
+    border-right: #222222 1px solid;
+  }
+}
+
+.catalog_item {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  padding: 0px 20px;
+}
+
+.catalog_icon {
+  background-color: #efefef;
+  padding: 5px;
+  border-radius: 50px;
+  object-fit: contain;
+}
+
+.catalog_category {
+  font-size: 16px;
+}

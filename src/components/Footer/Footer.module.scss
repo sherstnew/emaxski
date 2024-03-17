@@ -1,0 +1,20 @@
+@import '../../static/variables/variables';
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 30px;
+  width: 100%;
+  padding: 20px 0px;
+}
+
+.footer_section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  font-weight: 600;
+}

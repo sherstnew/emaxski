@@ -1,0 +1,157 @@
+@import '../../static/variables/variables';
+
+.create {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 35px;
+  width: 50%;
+  background-color: $accent-background-color;
+  border-radius: 5px;
+}
+
+.hide {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+  text-transform: uppercase;
+  color:#8a8a8a;
+  cursor: pointer;
+}
+
+.create_header {
+  width: 100%;
+  font-size: 32px;
+}
+
+.create_subheader {
+  width: 100%;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.ad_text {
+  position: relative;
+  width: 100%;
+}
+
+.textarea {
+  width: 100%;
+  height: 150px;
+  resize: none;
+  border: #e5e5e5 1px solid;
+  outline: none;
+  border-radius: 5px;
+  padding-top: 20px;
+  padding-left: 20px;
+  font-family: $font-family;
+}
+
+.limit {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 14px;
+  padding: 3px;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+.contacts {
+  width: 100%;
+  padding: 15px 20px;
+  font-family: $font-family;
+  border: #e5e5e5 1px solid;
+  outline: none;
+  border-radius: 5px;
+}
+
+.photos {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.photos_gallery {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.photos_btns {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+}
+
+.button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border: none;
+  outline: none;
+  color: $light-text-color;
+  text-transform: uppercase;
+  padding: 20px 40px;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.add_photo {
+  color: $blue-color;
+  background-color: rgba(255, 255, 255, 0);
+  transition: .5s;
+  border: $blue-color 1px solid;
+  &:hover {
+    background-color: $blue-color;
+    color: $light-text-color;
+  }
+}
+
+.publish {
+  color: $light-text-color;
+  background-color: $green-bg-color;
+  transition: background-color .5s;
+  &:hover {
+    background-color: $green-bg-color-hover;
+  }
+}
+
+.file_input {
+  display: none;
+}
+
+.file_preview {
+  width: auto;
+  height: 200px;
+  border-radius: 5px;
+}
+
+.cross {
+  filter: invert(70%);
+}
+
+.hidden {
+  display: none;
+}

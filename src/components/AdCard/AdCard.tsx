@@ -10,7 +10,7 @@ import notFoundImg from '@/static/images/notfound.png';
 import { MouseEvent, useState } from 'react';
 import { format } from 'date-fns';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
-import Link from 'next/navigation';
+import Link from 'next/link';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);

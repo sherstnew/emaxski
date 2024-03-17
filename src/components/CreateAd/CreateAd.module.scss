@@ -11,6 +11,10 @@
   width: 50%;
   background-color: $accent-background-color;
   border-radius: 5px;
+  margin-top: 100px;
+  @media screen and (max-width: 700px) {
+    width: 90%;
+  }
 }
 
 .hide {
@@ -64,6 +68,10 @@
   padding: 3px;
   background-color: #ffffff;
   border-radius: 5px;
+  @media screen and (max-width: 700px) {
+    bottom: 10px;
+    right: 5px;
+  }
 }
 
 .contacts {
@@ -101,6 +109,10 @@
   justify-content: flex-end;
   align-items: center;
   gap: 20px;
+  @media screen and (max-width: 700px) {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
 
 .button {
@@ -150,6 +162,16 @@
 
 .cross {
   filter: invert(70%);
+}
+
+.arrowdown {
+  filter: invert(30%);
+}
+
+.hide_title {
+  @media screen and (max-width: 700px) {
+    display: none;
+  }
 }
 
 .hidden {

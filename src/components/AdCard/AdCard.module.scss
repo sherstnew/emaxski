@@ -27,6 +27,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: 700px) {
+    align-items: flex-end;
+    align-content: flex-end;
+  }
 }
 
 .show_contacts_btn {
@@ -41,6 +45,10 @@
   padding: 10px 0px;
   font-size: 16px;
   cursor: pointer;
+  @media screen and (max-width: 700px) {
+    font-size: 14px;
+    text-align: left;
+  }
 }
 
 .footer_right {
@@ -49,6 +57,11 @@
   align-items: center;
   flex-wrap: nowrap;
   gap: 30px;
+  @media screen and (max-width: 700px) {
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 14px;
+  }
 }
 
 .ad_date {
@@ -80,6 +93,7 @@
 
 .gallery_image {
   width: auto;
+  height: 100px;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -109,6 +123,10 @@
   border: #ffffff 2px solid;
   background: none;
   z-index: 4;
+  @media screen and (max-width: 700px) {
+    right: 10%;
+    top: 25%;
+  }
 }
 
 .cross {
@@ -117,6 +135,10 @@
 
 .image {
   width: auto;
+  max-width: 80%;
   border-radius: 5px;
   outline: #ffffff 7px solid;
+  @media screen and (max-width: 700px) {
+    height: auto;
+  }
 }

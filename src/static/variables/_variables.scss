@@ -1,4 +1,4 @@
-$font-family: 'Montserrat';
+$font-family: var(--font-montserrat);
 
 $text-color: #282828;
 $light-text-color: #ffffff;
@@ -13,6 +13,5 @@ $green-bg-color: #80bd0b;
 $green-bg-color-hover: #58a20a;
 
 $header-vk-bg-color-hover: #0077FF;
-
 
 $blue-color: #0e52a0;

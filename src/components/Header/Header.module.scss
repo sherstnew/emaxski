@@ -1,9 +1,11 @@
 @import '../../static/variables/_variables.scss';
 
 .header {
-  position: fixed;
+  position: sticky;
+  top: 0;
   z-index: 2;
   width: 100%;
+  height: 80px;
 }
 
 .menu {
@@ -15,6 +17,9 @@
   gap: 30px;
   background-color: $header-background-color;
   color: $light-text-color;
+  @media screen and (max-width: 700px) {
+    gap: 0px;
+  }
 }
 
 .button {
@@ -28,12 +33,62 @@
   color: $light-text-color;
   text-transform: uppercase;
   font-size: 14px;
+  @media screen and (max-width: 700px) {
+    font-size: 12px;
+  }
+}
+
+.menu_left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: nowrap;
+  @media screen and (max-width: 700px) {
+    width: 100%;
+  }
+}
+
+.menu_right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  @media screen and (max-width: 700px) {
+    width: 100%;
+    background-color: $background-color;
+    padding: 0px 5%;
+    padding-bottom: 20px;
+  }
 }
 
 .categories {
   background-color: $header-categories-bg-color;
   height: 100%;
   padding: 30px 50px;
+  @media screen and (max-width: 700px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    max-width: 50%;
+    padding: 30px 20px;
+    text-align: left;
+    color: #efefef;
+    font-size: 14px;
+  }
+}
+
+.logo {
+  @media screen and (max-width: 700px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: auto;
+    padding: 30px 0px;
+  }
 }
 
 .vk {
@@ -44,9 +99,15 @@
   text-align: left;
   font-weight: 600;
   border: 1px solid #ffffff;
-  background: none;
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0);
   &:hover {
-    background-color: $header-vk-bg-color-hover;
+    color: $header-vk-bg-color-hover;
+    background-color: #ffffff;
+  }
+  @media screen and (max-width: 700px) {
+    margin-top: 20px;
+    color: $header-vk-bg-color-hover;
   }
 }
 
@@ -65,6 +126,9 @@
   &:hover {
     background-color: $green-bg-color-hover;
   }
+  @media screen and (max-width: 700px) {
+    margin-top: 20px;
+  }
 }
 
 .new_ad_title {
@@ -72,6 +136,8 @@
 }
 
 .catalog {
+  position: absolute;
+  top: 80px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -81,6 +147,11 @@
   color: $light-text-color;
   background-color: $header-categories-bg-color;
   padding: 30px 0px;
+  @media screen and (max-width: 700px) {
+    flex-wrap: wrap;
+    overflow-y: auto;
+    height: 300px;
+  }
 }
 
 .catalog_col {
@@ -95,6 +166,11 @@
   &:nth-child(2) {
     border-left: #222222 1px solid;
     border-right: #222222 1px solid;
+  }
+  @media screen and (max-width: 700px) {
+    width: 100%;
+    height: auto;
+    border: none;
   }
 }
 

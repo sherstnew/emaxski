@@ -8,6 +8,7 @@ import { ChangeEvent } from 'react';
 import { CreateAdVisibleContext } from '@/contexts/CreateAdVisible';
 
 import crossIcon from '@/static/icons/cross.svg';
+import arrowDownIcon from '@/static/icons/arrow-down.svg';
 
 const cx = classNames.bind(styles);
 
@@ -33,8 +34,13 @@ export default function CreateAd() {
         className={styles.hide}
         onClick={() => setCreateAdVisible(!createAdVisible)}
       >
-        <span>{createAdVisible ? 'Свернуть' : 'Развернуть'}</span>
-        <Image src={crossIcon} alt='Свернуть' width={30} height={30} className={styles.cross} />
+        <span className={styles.hide_title}>{createAdVisible ? 'Свернуть' : 'Развернуть'}</span>
+        {
+          createAdVisible ?
+          <Image src={crossIcon} alt='Свернуть' width={30} height={30} className={styles.cross} />
+          :
+          <Image src={arrowDownIcon} alt='Развернуть' width={30} height={30} className={styles.arrowdown} />
+        }
       </div>
       <header className={styles.create_header}>Новое объявление</header>
       <div className={cx({ create_subheader: true, hidden: !createAdVisible })}>

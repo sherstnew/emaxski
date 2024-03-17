@@ -10,7 +10,7 @@ import { useSearchParams } from 'next/navigation';
 
 import companyLogo from '@/static/logos/company.png';
 import arrowDownIcon from '@/static/icons/arrow-down.svg';
-import vkIcon from '@/static/icons/vk.svg';
+import vkIcon from '@/static/icons/vk-colored.svg';
 import plusIcon from '@/static/icons/plus.svg';
 
 import skisIcon from '@/static/icons/catalog/skis.png';
@@ -52,40 +52,26 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.menu}>
-        <Link href="/">
-          <Image src={companyLogo} alt='Emaxski' width={155} height={36} />
-        </Link>
-        <button
-          className={styles.categories + ' ' + styles.button}
-          onClick={() =>
-            setCategoriesVisible((categoriesVisible) => !categoriesVisible)
-          }
-        >
-          <span className={styles.categories_title}>Категории объявлений</span>
-          <Image
-            src={arrowDownIcon}
-            alt='Развернуть меню'
-            width={20}
-            height={20}
-          />
-        </button>
-        <Link
-          href='https://vk.com/esldsdd'
-          target='_blank'
-          className={styles.vk + ' ' + styles.button}
-        >
-          <Image src={vkIcon} alt='ВКонтакте' width={30} height={30} />
-          <span className={styles.vk_title}>Наша группа</span>
-        </Link>
-        <button
-          className={styles.new_ad + ' ' + styles.button}
-          onClick={createAd}
-        >
-          <Image src={plusIcon} alt='Новое объявление' width={30} height={30} />
-          <span className={styles.new_ad_title}>Подать объявление</span>
-        </button>
-      </div>
-      {categoriesVisible ?
+        <div className={styles.menu_left}>
+          <Link href="/" className={styles.logo}>
+            <Image src={companyLogo} alt='Emaxski' width={155} height={36} />
+          </Link>
+          <button
+            className={styles.categories + ' ' + styles.button}
+            onClick={() =>
+              setCategoriesVisible((categoriesVisible) => !categoriesVisible)
+            }
+          >
+            <span className={styles.categories_title}>Категории объявлений</span>
+            <Image
+              src={arrowDownIcon}
+              alt='Развернуть меню'
+              width={20}
+              height={20}
+            />
+          </button>
+        </div>
+        {categoriesVisible ?
         <div className={styles.catalog}>
           <div className={styles.catalog_col}>
             <Link href="/?category=Лыжи" className={styles.catalog_item}>
@@ -114,51 +100,69 @@ export default function Header() {
             </Link>
           </div>
           <div className={styles.catalog_col}>
-            <div className={styles.catalog_item}>
+            <Link href="/?category=Одежда" className={styles.catalog_item}>
               <Image src={jacketIcon} alt="Одежда" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Одежда</span>
-            </div>
-            <div className={styles.catalog_item}>
+            </Link>
+            <Link href="/?category=Сумки, чехлы" className={styles.catalog_item}>
               <Image src={bagIcon} alt="Сумки, чехлы" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Сумки, чехлы</span>
-            </div>
-            <div className={styles.catalog_item}>
+            </Link>
+            <Link href="/?category=Аксессуары" className={styles.catalog_item}>
               <Image src={accessoryIcon} alt="Аксессуары" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Аксессуары</span>
-            </div>
-            <div className={styles.catalog_item}>
+            </Link>
+            <Link href="/?category=Лыжные мази" className={styles.catalog_item}>
               <Image src={ointmentIcon} alt="Лыжные мази" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Лыжные мази</span>
-            </div>
-            <div className={styles.catalog_item}>
+            </Link>
+            <Link href="/?category=Лыжные ботинки" className={styles.catalog_item}>
               <Image src={shoesIcon} alt="Лыжные ботинки" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Лыжные ботинки</span>
-            </div>
-            <div className={styles.catalog_item}>
+            </Link>
+            <Link href="/?category=Литература" className={styles.catalog_item}>
               <Image src={bookIcon} alt="Литература" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Литература</span>
-            </div>
+            </Link>
           </div>
           <div className={styles.catalog_col}>
-            <div className={styles.catalog_item}>
+            <Link href="/?category=Пульсометры" className={styles.catalog_item}>
               <Image src={pulseIcon} alt="Пульсометры" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Пульсометры</span>
-            </div>
-            <div className={styles.catalog_item}>
+            </Link>
+            <Link href="/?category=Инструменты" className={styles.catalog_item}>
               <Image src={toolsIcon} alt="Инструменты" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Инструменты</span>
-            </div>
-            <div className={styles.catalog_item}>
+            </Link>
+            <Link href="/?category=Обувь" className={styles.catalog_item}>
               <Image src={bootsIcon} alt="Обувь" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Обувь</span>
-            </div>
-            <div className={styles.catalog_item}>
+            </Link>
+            <Link href="/?category=Биатлон" className={styles.catalog_item}>
               <Image src={biatlonIcon} alt="Биатлон" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Биатлон</span>
-            </div>
+            </Link>
           </div>
         </div>
       : ''}
+        <div className={styles.menu_right}>
+          <Link
+            href='https://vk.com/esldsdd'
+            target='_blank'
+            className={styles.vk + ' ' + styles.button}
+          >
+            <Image src={vkIcon} alt='ВКонтакте' width={30} height={30} />
+            <span className={styles.vk_title}>Наша группа</span>
+          </Link>
+          <button
+            className={styles.new_ad + ' ' + styles.button}
+            onClick={createAd}
+          >
+            <Image src={plusIcon} alt='Новое объявление' width={30} height={30} />
+            <span className={styles.new_ad_title}>Подать объявление</span>
+          </button>
+        </div>
+      </div>
     </header>
   );
 }

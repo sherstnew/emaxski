@@ -8,6 +8,11 @@
   gap: 30px;
   width: 100%;
   padding: 20px 0px;
+  @media screen and (max-width: 700px) {
+    width: 90%;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
 }
 
 .footer_section {

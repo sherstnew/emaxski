@@ -38,7 +38,7 @@ const cx = classNames.bind(styles);
 export default function Header() {
   const { setCreateAdVisible } = useContext(CreateAdVisibleContext);
 
-  const [categoriesVisible, setCategoriesVisible] = useState(null);
+  const [categoriesVisible, setCategoriesVisible] = useState<boolean>(false);
 
   const searchParams = useSearchParams();
 

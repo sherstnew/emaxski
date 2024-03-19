@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.scss";
+import { Suspense } from 'react';
 
 const font = Montserrat({ subsets: ["latin", "cyrillic"] });
 
@@ -15,8 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={font.className} style={font.style}>{children}</body>
-    </html>
+    <Suspense>
+      <html lang="en">
+        <body className={font.className} style={font.style}>{children}</body>
+      </html>
+    </Suspense>
   );
 }

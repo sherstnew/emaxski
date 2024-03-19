@@ -44,14 +44,10 @@ export default function CreateAd() {
     //       author_link: contacts,
     //       author_platform_name: 'Аноним',
     //       category: category,
-    //       price: 55000,
+    //       price: price,
     //       description: adText,
     //       images: files,
-    //       published: true,
-    //       checked: false,
     //       added_time: addedTime,
-    //       buying: false,
-    //       verified: true,
     //     }),
     //   })
     //   .then(res => res.json())

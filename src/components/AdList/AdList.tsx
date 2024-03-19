@@ -1,36 +1,29 @@
+'use client'
+
+import { useEffect, useState } from 'react';
 import AdCard from '../AdCard/AdCard';
 import styles from './AdList.module.scss';
 import { useSearchParams } from 'next/navigation';
-
-const ads = [
-  {
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor elit nec iaculis ultricies. Donec felis ipsum, tempor ac diam quis, commodo maximus felis. Nam sit amet neque vitae nisl imperdiet semper. Praesent aliquet varius nisl, at sodales elit elementum non. Etiam non neque eu enim commodo consequat. Aliquam cursus rhoncus lectus et pellentesque. Vivamus ut lacinia urna. Sed dui velit, fringilla tempus venenatis ac, pretium vitae ligula. Aliquam sit amet augue semper, congue diam et, mollis turpis. Vestibulum vestibulum purus vel sagittis consequat.',
-    photos: [
-      'https://osovet64.ru/wp-content/uploads/e/d/3/ed30dfa14aeb2eafb59e94f2b47b0e7b.png',
-      'https://osovet64.ru/wp-content/uploads/e/d/3/ed30dfa14aeb2eafb59e94f2b47b0e7b.png',
-      'https://osovet64.ru/wp-content/uploads/e/d/3/ed30dfa14aeb2eafb59e94f2b47b0e7b.png',
-      'https://osovet64.ru/wp-content/uploads/e/d/3/ed30dfa14aeb2eafb59e94f2b47b0e7b.png',
-      'https://osovet64.ru/wp-content/uploads/e/d/3/ed30dfa14aeb2eafb59e94f2b47b0e7b.png',
-      'https://osovet64.ru/wp-content/uploads/e/d/3/ed30dfa14aeb2eafb59e94f2b47b0e7b.png',
-    ],
-    contacts: '+79104569850',
-    category: 'Лыжи',
-    date: '2024-03-15T18:25:57.442000',
-  },
-  {
-    description: 'Продам гараж',
-    photos: [
-      'https://osovet64.ru/wp-content/uploads/e/d/3/ed30dfa14aeb2eafb59e94f2b47b0e7b.png',
-    ],
-    contacts: 'sherstnev.denis.v@gmail.com',
-    category: 'Литература',
-    date: '2024-03-15T18:25:57.442000',
-  },
-];
+import { IAd } from '@/static/types/IAd';
 
 export default function AdList() {
 
   const searchParams = useSearchParams();
+
+  const [ads, setAds] = useState<IAd[]>();
+
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/pweb/ads`)
+    .then(res => res.json())
+    .then(data => {
+      if (data) {
+        setAds(data);
+      };
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }, [searchParams]);
 
   return (
     <div className={styles.ad_list}>

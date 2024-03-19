@@ -15,6 +15,9 @@
   @media screen and (max-width: 700px) {
     width: 90%;
   }
+  @media screen and (min-width: 700px) and (max-width: 1400px) {
+    width: 90%;
+  }
 }
 
 .hide {
@@ -28,6 +31,7 @@
   text-transform: uppercase;
   color:#8a8a8a;
   cursor: pointer;
+  user-select: none;
 }
 
 .create_header {
@@ -76,6 +80,24 @@
 
 .contacts {
   width: 100%;
+  padding: 15px 20px;
+  font-family: $font-family;
+  border: #e5e5e5 1px solid;
+  outline: none;
+  border-radius: 5px;
+}
+
+.category {
+  width: 100%;
+  padding: 15px 20px;
+  font-family: $font-family;
+  border: #e5e5e5 1px solid;
+  outline: none;
+  border-radius: 5px;
+}
+
+.cost {
+  width: 30%;
   padding: 15px 20px;
   font-family: $font-family;
   border: #e5e5e5 1px solid;
@@ -176,4 +198,60 @@
 
 .hidden {
   display: none;
+}
+
+.modal_thanks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.thanks {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  gap: 20px;
+}
+
+.thanks_like {
+  width: 100px;
+  height: 100px;
+}
+
+.thanks_header {
+  text-align: center;
+  width: 100%;
+  font-size: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.thanks_subheader {
+  text-align: center;
+  width: 100%;
+}
+
+.modal_close {
+  position: relative;
+  bottom: 20%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  border: #ffffff 2px solid;
+  background: none;
+  z-index: 4;
 }

@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Header.module.scss';
+import classNames from 'classnames/bind';
 import { useContext, useState, useEffect } from 'react';
 import { CreateAdVisibleContext } from '@/contexts/CreateAdVisible';
 import { animateScroll } from 'react-scroll';
@@ -32,10 +33,12 @@ import toolsIcon from '@/static/icons/catalog/tools.png';
 import bootsIcon from '@/static/icons/catalog/boots.png';
 import biatlonIcon from '@/static/icons/catalog/biatlon.png';
 
+const cx = classNames.bind(styles);
+
 export default function Header() {
   const { setCreateAdVisible } = useContext(CreateAdVisibleContext);
 
-  const [categoriesVisible, setCategoriesVisible] = useState(false);
+  const [categoriesVisible, setCategoriesVisible] = useState(null);
 
   const searchParams = useSearchParams();
 
@@ -68,83 +71,82 @@ export default function Header() {
               alt='Развернуть меню'
               width={20}
               height={20}
+              className={cx({reversed: categoriesVisible && categoriesVisible !== null})}
             />
           </button>
         </div>
-        {categoriesVisible ?
-        <div className={styles.catalog}>
+        <div className={cx({catalog: true, showed: categoriesVisible && categoriesVisible !== null, hidden: !categoriesVisible && categoriesVisible !== null})}>
           <div className={styles.catalog_col}>
-            <Link href="/?category=Лыжи" className={styles.catalog_item}>
+            <Link href="/?category=лыжи" className={styles.catalog_item}>
               <Image src={skisIcon} alt="Лыжи" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Лыжи</span>
             </Link>
-            <Link href="/?category=Лыжные палки" className={styles.catalog_item}>
-              <Image src={skiPolesIcon} alt="Лыжные палки" width={40} height={40} className={styles.catalog_icon} />
+            <Link href="/?category=палки" className={styles.catalog_item}>
+              <Image src={skiPolesIcon} alt="Палки" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Лыжные палки</span>
             </Link>
-            <Link href="/?category=Лыжные крепления" className={styles.catalog_item}>
+            <Link href="/?category=крепления" className={styles.catalog_item}>
               <Image src={skiFasteningIcon} alt="Лыжные крепления" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Лыжные крепления</span>
             </Link>
-            <Link href="/?category=Лыжные тренажеры" className={styles.catalog_item}>
+            <Link href="/?category=тренажеры" className={styles.catalog_item}>
               <Image src={skiTrainingIcon} alt="Лыжные тренажеры" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Лыжные тренажеры</span>
             </Link>
-            <Link href="/?category=Лыжероллеры" className={styles.catalog_item}>
+            <Link href="/?category=лыжероллеры" className={styles.catalog_item}>
               <Image src={skiRollersIcon} alt="Лыжероллеры" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Лыжероллеры</span>
             </Link>
-            <Link href="/?category=Спортивное питание" className={styles.catalog_item}>
+            <Link href="/?category=спорт. питание" className={styles.catalog_item}>
               <Image src={sportPitIcon} alt="Спортивное питание" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Спортивное питание</span>
             </Link>
           </div>
           <div className={styles.catalog_col}>
-            <Link href="/?category=Одежда" className={styles.catalog_item}>
+            <Link href="/?category=одежда" className={styles.catalog_item}>
               <Image src={jacketIcon} alt="Одежда" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Одежда</span>
             </Link>
-            <Link href="/?category=Сумки, чехлы" className={styles.catalog_item}>
+            <Link href="/?category=сумки" className={styles.catalog_item}>
               <Image src={bagIcon} alt="Сумки, чехлы" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Сумки, чехлы</span>
             </Link>
-            <Link href="/?category=Аксессуары" className={styles.catalog_item}>
+            <Link href="/?category=аксессуары" className={styles.catalog_item}>
               <Image src={accessoryIcon} alt="Аксессуары" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Аксессуары</span>
             </Link>
-            <Link href="/?category=Лыжные мази" className={styles.catalog_item}>
+            <Link href="/?category=смазка" className={styles.catalog_item}>
               <Image src={ointmentIcon} alt="Лыжные мази" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Лыжные мази</span>
             </Link>
-            <Link href="/?category=Лыжные ботинки" className={styles.catalog_item}>
+            <Link href="/?category=л. ботинки" className={styles.catalog_item}>
               <Image src={shoesIcon} alt="Лыжные ботинки" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Лыжные ботинки</span>
             </Link>
-            <Link href="/?category=Литература" className={styles.catalog_item}>
+            <Link href="/?category=литература" className={styles.catalog_item}>
               <Image src={bookIcon} alt="Литература" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Литература</span>
             </Link>
           </div>
           <div className={styles.catalog_col}>
-            <Link href="/?category=Пульсометры" className={styles.catalog_item}>
+            <Link href="/?category=пульсометры" className={styles.catalog_item}>
               <Image src={pulseIcon} alt="Пульсометры" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Пульсометры</span>
             </Link>
-            <Link href="/?category=Инструменты" className={styles.catalog_item}>
+            <Link href="/?category=инструменты" className={styles.catalog_item}>
               <Image src={toolsIcon} alt="Инструменты" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Инструменты</span>
             </Link>
-            <Link href="/?category=Обувь" className={styles.catalog_item}>
+            <Link href="/?category=обувь" className={styles.catalog_item}>
               <Image src={bootsIcon} alt="Обувь" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Обувь</span>
             </Link>
-            <Link href="/?category=Биатлон" className={styles.catalog_item}>
+            <Link href="/?category=биатлон" className={styles.catalog_item}>
               <Image src={biatlonIcon} alt="Биатлон" width={40} height={40} className={styles.catalog_icon} />
               <span className={styles.catalog_category}>Биатлон</span>
             </Link>
           </div>
         </div>
-      : ''}
         <div className={styles.menu_right}>
           <Link
             href='https://vk.com/esldsdd'

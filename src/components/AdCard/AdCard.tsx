@@ -10,20 +10,13 @@ import notFoundImg from '@/static/images/notfound.png';
 import { MouseEvent, useState } from 'react';
 import { format } from 'date-fns';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+import { IAd } from '@/static/types/IAd';
 import Link from 'next/link';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-export interface IAdCardProps {
-  description: string;
-  photos: string[];
-  contacts: string;
-  category: string;
-  date: string;
-}
-
-export default function AdCard(props: IAdCardProps) {
+export default function AdCard(props: IAd) {
   const [contactsVisible, setContactsVisible] = useState<boolean>(false);
 
   const [modalImageVisible, setModalImageVisible] = useState<boolean>(false);
@@ -35,6 +28,16 @@ export default function AdCard(props: IAdCardProps) {
     <>
       {modalImageVisible ? (
         <div className={styles.modal_image}>
+          <Image
+            loader={() =>
+              typeof imageIncreaseSrc == 'string' ? imageIncreaseSrc : ''
+            }
+            src={imageIncreaseSrc}
+            className={styles.image}
+            alt='Картинка'
+            width={0}
+            height={400}
+          />
           <button
             type='button'
             className={styles.modal_close}
@@ -48,16 +51,6 @@ export default function AdCard(props: IAdCardProps) {
               className={styles.cross}
             />
           </button>
-          <Image
-            loader={() =>
-              typeof imageIncreaseSrc == 'string' ? imageIncreaseSrc : ''
-            }
-            src={imageIncreaseSrc}
-            className={styles.image}
-            alt='Картинка'
-            width={0}
-            height={400}
-          />
         </div>
       ) : (
         ''
@@ -65,15 +58,15 @@ export default function AdCard(props: IAdCardProps) {
       <section className={styles.ad_card}>
         <section className={styles.ad_description}>{props.description}</section>
         <section className={styles.ad_gallery}>
-          {props.photos
-            ? props.photos.map((photo, index) => (
+          {props.images
+            ? props.images.map((image, index) => (
                 <Image
                   key={index}
-                  loader={() => photo}
-                  src={photo}
+                  loader={() => process.env.NEXT_PUBLIC_BASE_URL + '/' + image}
+                  src={process.env.NEXT_PUBLIC_BASE_URL+ '/' + image}
                   alt='Фотография'
                   width={0}
-                  height={200}
+                  height={300}
                   className={styles.gallery_image}
                   onClick={(event) => {
                     const target = event.target as HTMLImageElement;
@@ -116,7 +109,7 @@ export default function AdCard(props: IAdCardProps) {
                 width={20}
                 height={20}
               />
-              <span>{format(props.date, 'dd.MM.yyyy')}</span>
+              <span>{format(props.added_time, 'dd.MM.yyyy')}</span>
             </div>
             <Link href={`/?category=${props.category}`} className={styles.ad_category}>{props.category}</Link>
           </div>
@@ -124,7 +117,7 @@ export default function AdCard(props: IAdCardProps) {
         {
           contactsVisible
           ?
-          <div className={styles.contacts}>{props.contacts}</div>
+          <div className={styles.contacts}>{props.author_link}</div>
           :
           ""
         }

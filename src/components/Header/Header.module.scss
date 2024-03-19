@@ -20,6 +20,9 @@
   @media screen and (max-width: 700px) {
     gap: 0px;
   }
+  @media screen and (min-width: 700px) and (max-width: 1400px) {
+    gap: 0px;
+  }
 }
 
 .button {
@@ -47,6 +50,10 @@
   @media screen and (max-width: 700px) {
     width: 100%;
   }
+  @media screen and (min-width: 700px) and (max-width: 1400px) {
+    justify-content: center;
+    width: 100%;
+  }
 }
 
 .menu_right {
@@ -56,6 +63,12 @@
   gap: 10px;
   flex-wrap: nowrap;
   @media screen and (max-width: 700px) {
+    width: 100%;
+    background-color: $background-color;
+    padding: 0px 5%;
+    padding-bottom: 20px;
+  }
+  @media screen and (min-width: 700px) and (max-width: 1400px) {
     width: 100%;
     background-color: $background-color;
     padding: 0px 5%;
@@ -73,6 +86,17 @@
     align-items: center;
     height: 100%;
     max-width: 50%;
+    padding: 30px 20px;
+    text-align: left;
+    color: #efefef;
+    font-size: 14px;
+  }
+  @media screen and (min-width: 700px) and (max-width: 1400px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 50%;
     padding: 30px 20px;
     text-align: left;
     color: #efefef;
@@ -109,6 +133,10 @@
     margin-top: 20px;
     color: $header-vk-bg-color-hover;
   }
+  @media screen and (min-width: 700px) and (max-width: 1400px) {
+    margin-top: 20px;
+    color: $header-vk-bg-color-hover;
+  }
 }
 
 .vk_title {
@@ -129,6 +157,9 @@
   @media screen and (max-width: 700px) {
     margin-top: 20px;
   }
+  @media screen and (min-width: 700px) and (max-width: 1400px) {
+    margin-top: 20px;
+  }
 }
 
 .new_ad_title {
@@ -139,6 +170,8 @@
   position: absolute;
   top: 80px;
   display: flex;
+  opacity: 0;
+  // visibility: hidden;
   justify-content: center;
   align-items: flex-start;
   align-content: flex-start;
@@ -147,10 +180,26 @@
   color: $light-text-color;
   background-color: $header-categories-bg-color;
   padding: 30px 0px;
+  transition: .5s;
   @media screen and (max-width: 700px) {
     flex-wrap: wrap;
     overflow-y: auto;
     height: 300px;
+  }
+  @media screen and (min-width: 700px) and (max-width: 1400px) {
+    flex-wrap: wrap;
+    overflow-y: auto;
+    height: 300px;
+  }
+  &.showed {
+    opacity: 1;
+    visibility: visible;
+    transition: .5s;
+  }
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: .5s;
   }
 }
 
@@ -168,6 +217,11 @@
     border-right: #222222 1px solid;
   }
   @media screen and (max-width: 700px) {
+    width: 100%;
+    height: auto;
+    border: none;
+  }
+  @media screen and (min-width: 700px) and (max-width: 1400px) {
     width: 100%;
     height: auto;
     border: none;
@@ -193,4 +247,8 @@
 
 .catalog_category {
   font-size: 16px;
+}
+
+.reversed {
+  transform: rotate(180deg);
 }

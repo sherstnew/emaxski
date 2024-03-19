@@ -61,6 +61,9 @@
     flex-wrap: wrap;
     gap: 10px;
     font-size: 14px;
+    @media screen and (min-width: 700px) and (max-width: 1400px) {
+      width: 50%;
+    }
   }
 }
 
@@ -93,7 +96,7 @@
 
 .gallery_image {
   width: auto;
-  height: 100px;
+  height: 300px;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -112,9 +115,8 @@
 }
 
 .modal_close {
-  position: absolute;
-  top: 20%;
-  right: 30%;
+  position: relative;
+  bottom: 25%;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -123,10 +125,6 @@
   border: #ffffff 2px solid;
   background: none;
   z-index: 4;
-  @media screen and (max-width: 700px) {
-    right: 10%;
-    top: 25%;
-  }
 }
 
 .cross {

@@ -11,7 +11,11 @@
   width: 50%;
   background-color: $accent-background-color;
   border-radius: 5px;
-  margin-top: 100px;
+  margin-top: 30px;
+  -webkit-tap-highlight-color: transparent;
+  &.rolled {
+    cursor: pointer;
+  }
   @media screen and (max-width: 700px) {
     width: 90%;
   }
@@ -94,15 +98,23 @@
   border: #e5e5e5 1px solid;
   outline: none;
   border-radius: 5px;
+  background-color: #ffffff;
 }
 
-.cost {
+.category_option {
+  font-family: $font-family;
+}
+
+.price {
   width: 30%;
   padding: 15px 20px;
   font-family: $font-family;
   border: #e5e5e5 1px solid;
   outline: none;
   border-radius: 5px;
+  @media screen and (max-width: 700px) {
+    width: 100%;
+  }
 }
 
 .photos {
@@ -254,4 +266,8 @@
   border: #ffffff 2px solid;
   background: none;
   z-index: 4;
+}
+
+.invalid {
+  border: #ff4646 1px solid;
 }

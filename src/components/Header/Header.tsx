@@ -9,8 +9,9 @@ import { CreateAdVisibleContext } from '@/contexts/CreateAdVisible';
 import { animateScroll } from 'react-scroll';
 import { useSearchParams } from 'next/navigation';
 
-import companyLogo from '@/static/logos/company.png';
+import logo from '@/static/logos/logo_mobile.png';
 import arrowDownIcon from '@/static/icons/arrow-down.svg';
+import burgerMenuIcon from '@/static/icons/burger-menu.svg';
 import vkIcon from '@/static/icons/vk-colored.svg';
 import plusIcon from '@/static/icons/plus.svg';
 
@@ -39,6 +40,7 @@ export default function Header() {
   const { setCreateAdVisible } = useContext(CreateAdVisibleContext);
 
   const [categoriesVisible, setCategoriesVisible] = useState<boolean>(false);
+  const [width, setWidth] = useState(0);
 
   const searchParams = useSearchParams();
 
@@ -52,28 +54,37 @@ export default function Header() {
     setCategoriesVisible(false);
   }, [searchParams]);
 
+  useEffect(() => {
+    setWidth(window.innerWidth);
+  }, []);
+
   return (
     <header className={styles.header}>
       <div className={styles.menu}>
         <div className={styles.menu_left}>
           <Link href="/" className={styles.logo}>
-            <Image src={companyLogo} alt='Emaxski' width={155} height={36} />
+            <Image src={logo} alt='Emaxski' width={160} height={45} />
           </Link>
-          <button
+          <div
             className={styles.categories + ' ' + styles.button}
             onClick={() =>
               setCategoriesVisible((categoriesVisible) => !categoriesVisible)
             }
           >
             <span className={styles.categories_title}>Категории объявлений</span>
-            <Image
-              src={arrowDownIcon}
-              alt='Развернуть меню'
-              width={20}
-              height={20}
-              className={cx({reversed: categoriesVisible && categoriesVisible !== null})}
-            />
-          </button>
+            {
+              width !== 0 ?
+                <Image
+                  src={width < 768 ? burgerMenuIcon : arrowDownIcon}
+                  alt='Развернуть меню'
+                  width={30}
+                  height={30}
+                  className={cx({reversed: categoriesVisible && categoriesVisible !== null})}
+                />
+              :
+              ''
+            }
+          </div>
         </div>
         <div className={cx({catalog: true, showed: categoriesVisible && categoriesVisible !== null, hidden: !categoriesVisible && categoriesVisible !== null})}>
           <div className={styles.catalog_col}>
@@ -149,20 +160,20 @@ export default function Header() {
         </div>
         <div className={styles.menu_right}>
           <Link
-            href='https://vk.com/esldsdd'
+            href='https://vk.com/emaxski'
             target='_blank'
             className={styles.vk + ' ' + styles.button}
           >
             <Image src={vkIcon} alt='ВКонтакте' width={30} height={30} />
             <span className={styles.vk_title}>Наша группа</span>
           </Link>
-          <button
+          <div
             className={styles.new_ad + ' ' + styles.button}
             onClick={createAd}
           >
             <Image src={plusIcon} alt='Новое объявление' width={30} height={30} />
             <span className={styles.new_ad_title}>Подать объявление</span>
-          </button>
+          </div>
         </div>
       </div>
     </header>

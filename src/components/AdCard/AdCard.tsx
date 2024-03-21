@@ -7,7 +7,7 @@ import arrowDownIcon from '@/static/icons/arrow-down.svg';
 import calendarIcon from '@/static/icons/calendar.svg';
 import crossIcon from '@/static/icons/cross.svg';
 import notFoundImg from '@/static/images/notfound.png';
-import { MouseEvent, useState } from 'react';
+import { useState } from 'react';
 import { format } from 'date-fns';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import { IAd } from '@/static/types/IAd';
@@ -29,6 +29,7 @@ export default function AdCard(props: IAd) {
       {modalImageVisible ? (
         <div className={styles.modal_image}>
           <Image
+            onClick={() => setModalImageVisible(false)}
             loader={() =>
               typeof imageIncreaseSrc == 'string' ? imageIncreaseSrc : ''
             }
@@ -38,8 +39,7 @@ export default function AdCard(props: IAd) {
             width={0}
             height={400}
           />
-          <button
-            type='button'
+          <div
             className={styles.modal_close}
             onClick={() => setModalImageVisible(false)}
           >
@@ -50,7 +50,7 @@ export default function AdCard(props: IAd) {
               height={40}
               className={styles.cross}
             />
-          </button>
+          </div>
         </div>
       ) : (
         ''
@@ -66,7 +66,7 @@ export default function AdCard(props: IAd) {
                   src={process.env.NEXT_PUBLIC_BASE_URL+ '/' + image}
                   alt='Фотография'
                   width={0}
-                  height={300}
+                  height={250}
                   className={styles.gallery_image}
                   onClick={(event) => {
                     const target = event.target as HTMLImageElement;
@@ -81,8 +81,8 @@ export default function AdCard(props: IAd) {
         </section>
         <footer className={styles.ad_footer}>
           <div className={styles.footer_left}>
-            <button
-              type='button'
+            <div
+
               className={styles.show_contacts_btn}
               onClick={() =>
                 setContactsVisible((contactsVisible) => !contactsVisible)
@@ -99,7 +99,7 @@ export default function AdCard(props: IAd) {
                 height={20}
                 className={cx({ arrow: true, reversed: contactsVisible })}
               />
-            </button>
+            </div>
           </div>
           <div className={styles.footer_right}>
             <div className={styles.ad_date}>

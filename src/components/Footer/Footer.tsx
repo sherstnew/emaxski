@@ -13,7 +13,7 @@ export default function Footer () {
     <footer className={styles.footer}>
       <section className={styles.footer_section}>
         <Image src={vkIcon} alt="ВКонтакте" width={30} height={30} className={styles.icon} />
-        <Link href="https://vk.com/esldsdd" target='_blank'>vk.com/esldsdd</Link>
+        <Link href="https://vk.com/emaxski" target='_blank'>https://vk.com/emaxski</Link>
       </section>
       <section className={styles.footer_section}>
         <Image src={phoneIcon} alt="Телефон" width={30} height={30} className={styles.icon} />

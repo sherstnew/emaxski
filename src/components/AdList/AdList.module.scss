@@ -1,3 +1,5 @@
+@import '../../static/variables/variables';
+
 .ad_list {
   display: flex;
   justify-content: flex-start;
@@ -18,5 +20,36 @@
   font-size: 32px;
   @media screen and (max-width: 700px) {
     text-align: center;
+  }
+}
+
+.list {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.load_ads {
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+  padding: 20px 40px;
+  border-radius: 5px;
+  font-size: 15px;
+  color: $light-text-color;
+  background-color: $blue-color;
+  transition: .2s;
+  border: $blue-color 1px solid;
+  &:hover {
+    background-color: #0d2035;
   }
 }

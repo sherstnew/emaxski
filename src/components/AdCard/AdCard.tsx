@@ -24,12 +24,13 @@ export default function AdCard(props: IAd) {
     string | StaticImport
   >(notFoundImg);
 
+  const imagesLength = props.images.length;
+
   return (
     <>
       {modalImageVisible ? (
-        <div className={styles.modal_image}>
+        <div className={styles.modal_image} onClick={() => setModalImageVisible(false)}>
           <Image
-            onClick={() => setModalImageVisible(false)}
             loader={() =>
               typeof imageIncreaseSrc == 'string' ? imageIncreaseSrc : ''
             }
@@ -66,7 +67,7 @@ export default function AdCard(props: IAd) {
                   src={process.env.NEXT_PUBLIC_BASE_URL+ '/' + image}
                   alt='Фотография'
                   width={0}
-                  height={250}
+                  height={0}
                   className={styles.gallery_image}
                   onClick={(event) => {
                     const target = event.target as HTMLImageElement;
@@ -75,6 +76,25 @@ export default function AdCard(props: IAd) {
                       setModalImageVisible(true);
                     }
                   }}
+                  style={
+                    imagesLength === 1 ? {'width': '25%', 'maxWidth': '50%'}
+                    :
+                    imagesLength === 2 ? {'width': '49%'}
+                    :
+                    imagesLength === 3 ? {
+                      'width': String(100 / 3 - 2) + '%'
+                    }
+                    :
+                    imagesLength === 4 ? {
+                      'width': index === 3 ? '100%' : String(100 / 3 - 2) + '%'
+                    }
+                    :
+                    imagesLength > 4 ? {
+                      'width': index < 2 ? '49%' : String(100 / (imagesLength - 2) - 2) + '%'
+                    }
+                    :
+                    {}
+                  }
                 />
               ))
             : ''}
@@ -82,7 +102,6 @@ export default function AdCard(props: IAd) {
         <footer className={styles.ad_footer}>
           <div className={styles.footer_left}>
             <div
-
               className={styles.show_contacts_btn}
               onClick={() =>
                 setContactsVisible((contactsVisible) => !contactsVisible)
@@ -111,16 +130,19 @@ export default function AdCard(props: IAd) {
               />
               <span>{format(props.added_time, 'dd.MM.yyyy')}</span>
             </div>
-            <Link href={`/?category=${props.category}`} className={styles.ad_category}>{props.category}</Link>
+            <Link
+              href={`/?category=${props.category}`}
+              className={styles.ad_category}
+            >
+              {props.category}
+            </Link>
           </div>
         </footer>
-        {
-          contactsVisible
-          ?
+        {contactsVisible ? (
           <div className={styles.contacts}>{props.author_link}</div>
-          :
-          ""
-        }
+        ) : (
+          ''
+        )}
       </section>
     </>
   );

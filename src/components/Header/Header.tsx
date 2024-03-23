@@ -12,7 +12,8 @@ import { useSearchParams } from 'next/navigation';
 import logo from '@/static/logos/logo_mobile.png';
 import arrowDownIcon from '@/static/icons/arrow-down.svg';
 import burgerMenuIcon from '@/static/icons/burger-menu.svg';
-import vkIcon from '@/static/icons/vk-colored.svg';
+import vkIcon from '@/static/icons/vk.svg';
+import vkBlueIcon from '@/static/icons/vk-blue.svg';
 import plusIcon from '@/static/icons/plus.svg';
 
 import skisIcon from '@/static/icons/catalog/skis.png';
@@ -77,8 +78,8 @@ export default function Header() {
                 <Image
                   src={width < 768 ? burgerMenuIcon : arrowDownIcon}
                   alt='Развернуть меню'
-                  width={30}
-                  height={30}
+                  width={35}
+                  height={35}
                   className={cx({reversed: categoriesVisible && categoriesVisible !== null})}
                 />
               :
@@ -164,7 +165,7 @@ export default function Header() {
             target='_blank'
             className={styles.vk + ' ' + styles.button}
           >
-            <Image src={vkIcon} alt='ВКонтакте' width={30} height={30} />
+            <Image src={width > 768 ? vkIcon : vkBlueIcon} alt='ВКонтакте' width={30} height={30} />
             <span className={styles.vk_title}>Наша группа</span>
           </Link>
           <div

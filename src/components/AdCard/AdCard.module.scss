@@ -32,15 +32,15 @@
   justify-content: space-between;
   align-items: center;
   @media screen and (max-width: 700px) {
-    align-items: flex-end;
-    align-content: flex-end;
+    align-items: flex-start;
+    align-content: flex-start;
   }
 }
 
 .show_contacts_btn {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: nowrap;
   gap: 10px;
   background: none;
@@ -58,7 +58,7 @@
 .footer_right {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: nowrap;
   gap: 30px;
   @media screen and (max-width: 700px) {

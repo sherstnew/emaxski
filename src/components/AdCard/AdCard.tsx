@@ -58,7 +58,7 @@ export default function AdCard(props: IAd) {
       )}
       <section className={styles.ad_card}>
         <section className={styles.ad_description}>{props.description}</section>
-        <section className={styles.ad_gallery} style={{'flexDirection': imagesLength === 3 ? 'column' : 'row', 'height': imagesLength === 3 ? window.innerWidth > 700 ? '700px' : '300px' : 'auto'}}>
+        <section className={styles.ad_gallery} style={{'flexDirection': imagesLength === 3 ? 'column' : 'row', 'height': imagesLength === 3 ? window.innerWidth > 768 ? '700px' : '300px' : 'auto'}}>
           {props.images
             ? props.images.map((image, index) => (
                 <Image

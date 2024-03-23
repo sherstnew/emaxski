@@ -46,7 +46,7 @@ export default function Header() {
 
   const createAd = () => {
     setCategoriesVisible(false);
-    setCreateAdVisible(true);
+    setCreateAdVisible(createAdVisible => !createAdVisible);
     animateScroll.scrollToTop({ duration: 500, smooth: true });
   };
 

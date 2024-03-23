@@ -58,7 +58,7 @@ export default function AdCard(props: IAd) {
       )}
       <section className={styles.ad_card}>
         <section className={styles.ad_description}>{props.description}</section>
-        <section className={styles.ad_gallery}>
+        <section className={styles.ad_gallery} style={{'flexDirection': imagesLength === 3 ? 'column' : 'row', 'height': imagesLength === 3 ? window.innerWidth > 700 ? '700px' : '300px' : 'auto'}}>
           {props.images
             ? props.images.map((image, index) => (
                 <Image
@@ -77,20 +77,22 @@ export default function AdCard(props: IAd) {
                     }
                   }}
                   style={
-                    imagesLength === 1 ? {'width': '25%', 'maxWidth': '50%'}
+                    imagesLength === 1 ? {'width': '25%', 'maxWidth': '50%', 'height': '100%'}
                     :
-                    imagesLength === 2 ? {'width': '49%'}
+                    imagesLength === 2 ? {'width': '45%'}
                     :
                     imagesLength === 3 ? {
-                      'width': String(100 / 3 - 2) + '%'
+                      'width': '50%',
+                      'height': index === 0 ? '100%' : '49%'
                     }
                     :
                     imagesLength === 4 ? {
-                      'width': index === 3 ? '100%' : String(100 / 3 - 2) + '%'
+                      'width': '49%',
+                      'maxHeight': '400px'
                     }
                     :
                     imagesLength > 4 ? {
-                      'width': index < 2 ? '49%' : String(100 / (imagesLength - 2) - 2) + '%'
+                      'width': index < 2 ? '49%' : String(100 / (imagesLength - 2) - 5) + '%'
                     }
                     :
                     {}

@@ -110,7 +110,7 @@ export default function CreateAd() {
 
   return (
     <>
-      <form className={cx({create: true, rolled: !createAdVisible})} onClick={() => !createAdVisible ? setCreateAdVisible(true) : ''} onSubmit={(event) => createAd(event)}>
+      <form className={cx({create: true, hidden: !createAdVisible})} onClick={() => !createAdVisible ? setCreateAdVisible(true) : ''} onSubmit={(event) => createAd(event)}>
         <div
           className={styles.hide}
           onClick={() => setCreateAdVisible(!createAdVisible)}
@@ -166,7 +166,7 @@ export default function CreateAd() {
           <option value="">Выберите категорию</option>
           {
             categories.map((category, index) => (
-              <option className={styles.category_option} key={index} value={category.title} style={font.style}>
+              <option className={styles.category_option} key={index} value={category.title} style={{fontFamily: 'Verdana'}}>
                 {
                   category.title
                 }

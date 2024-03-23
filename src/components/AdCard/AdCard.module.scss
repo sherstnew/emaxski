@@ -4,6 +4,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  align-content: flex-start;
   flex-wrap: wrap;
   width: 100%;
   background-color: $accent-background-color;
@@ -64,9 +65,9 @@
     flex-wrap: wrap;
     gap: 10px;
     font-size: 14px;
-    @media screen and (min-width: 700px) and (max-width: 1400px) {
-      width: 50%;
-    }
+  }
+  @media screen and (min-width: 700px) and (max-width: 1400px) {
+    width: 50%;
   }
 }
 
@@ -97,18 +98,23 @@
   gap: 5px;
   width: 100%;
   padding: 10px;
+  @media screen and (max-width: 700px) {
+    padding: 0;
+    height: 50%;
+  }
 }
 
 .gallery_image {
   width: auto;
   height: auto;
-  max-width: 100%;
+  max-width: 55%;
+  max-height: 100%;
   border-radius: 5px;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   flex-grow: 1;
   object-fit: cover;
-  object-position: top;
+  // object-position: top;
 }
 
 .modal_image {

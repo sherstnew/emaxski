@@ -66,7 +66,7 @@ export default function Header() {
             <Image src={logo} alt='Emaxski' width={160} height={45} />
           </Link>
           <div
-            className={styles.categories + ' ' + styles.button}
+            className={styles.categories}
             onClick={() =>
               setCategoriesVisible((categoriesVisible) => !categoriesVisible)
             }

@@ -6,13 +6,11 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 30px;
-  width: 50%;
+  width: 700px;
   @media screen and (max-width: 700px) {
-    width: 90%;
     gap: 20px;
   }
   @media screen and (min-width: 700px) and (max-width: 1400px) {
-    width: 90%;
     gap: 20px;
   }
 }

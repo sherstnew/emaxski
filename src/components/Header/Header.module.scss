@@ -12,11 +12,10 @@
 }
 
 .menu {
-  width: 50%;
+  width: 700px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
   @media screen and (max-width: 700px) {
     flex-wrap: wrap;
     width: 100%;
@@ -34,17 +33,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   border: none;
   outline: none;
   color: $light-text-color;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-size: 12px;
-  line-height: 14px;
-  font-weight: 500;
+  letter-spacing: 1.2px;
+  font-size: 10px;
+  line-height: 11px;
+  font-weight: 400;
   @media screen and (max-width: 700px) {
     font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
   }
 }
 
@@ -52,7 +53,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
   flex-wrap: nowrap;
   width: 60%;
   @media screen and (max-width: 700px) {
@@ -70,8 +71,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   flex-wrap: nowrap;
+  width: 40%;
   @media screen and (max-width: 700px) {
     width: 100%;
     background-color: $background-color;
@@ -94,13 +96,14 @@
   align-items: center;
   gap: 10px;
   background-color: $header-categories-bg-color;
+  width: 225px;
   height: 100%;
-  padding: 20px 30px;
+  padding: 20px 0px;
   color: $light-text-color;
   text-transform: uppercase;
+  font-size: 10px;
   letter-spacing: 1.5px;
-  font-size: 12px;
-  line-height: 14px;
+  line-height: 10px;
   font-weight: 500;
   cursor: pointer;
   @media screen and (max-width: 700px) {
@@ -112,6 +115,9 @@
     padding: 0px 10px;
     text-align: left;
     gap: 0px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
   }
   @media screen and (min-width: 700px) and (max-width: 1400px) {
     display: flex;
@@ -122,6 +128,9 @@
     padding: 30px 20px;
     text-align: left;
     gap: 0px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
   }
 }
 
@@ -129,6 +138,23 @@
   @media screen and (max-width: 700px) {
     width: 50%;
   }
+}
+
+.categories_icon {
+  width: 15px;
+  height: 15px;
+  filter: invert(20%);
+  transition: .5s;
+  @media screen and (max-width: 700px) {
+    width: 35px;
+    height: 35px;
+    filter: invert(0%);
+  }
+}
+
+.reversed {
+  transform: rotate(180deg);
+  transition: .5s;
 }
 
 .logo {
@@ -147,10 +173,10 @@
 }
 
 .vk {
+  width: 115px;
   display: flex;
   justify-content: flex-start;
-  padding: 10px 20px;
-  height: 70%;
+  padding: 7px;
   transition: background-color .5s;
   border-radius: 5px;
   text-align: left;
@@ -183,10 +209,10 @@
 }
 
 .new_ad {
+  width: 140px;
   display: flex;
   justify-content: flex-start;
-  padding: 10px 20px;
-  height: 70%;
+  padding: 7px;
   background-color: $green-bg-color;
   transition: background-color .5s;
   border-radius: 5px;
@@ -197,10 +223,12 @@
   @media screen and (max-width: 700px) {
     margin-top: 20px;
     padding: 10px;
+    width: 166px;
   }
   @media screen and (min-width: 700px) and (max-width: 1400px) {
     margin-top: 20px;
     padding: 10px;
+    width: 166px;
   }
 }
 
@@ -210,7 +238,7 @@
 
 .catalog {
   position: absolute;
-  top: 75px;
+  top: 55px;
   display: flex;
   opacity: 0;
   // visibility: hidden;
@@ -292,13 +320,4 @@
 
 .catalog_category {
   font-size: 16px;
-}
-
-.categories_icon {
-  transition: .5s;
-}
-
-.reversed {
-  transform: rotate(180deg);
-  transition: .5s;
 }

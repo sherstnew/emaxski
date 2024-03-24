@@ -64,7 +64,7 @@ export default function Header() {
       <div className={styles.menu}>
         <div className={styles.menu_left}>
           <Link href="/" className={styles.logo}>
-            <Image src={logo} alt='Emaxski' width={160} height={45} />
+            <Image src={logo} alt='Emaxski' width={150} height={43} />
           </Link>
           <div
             className={styles.categories}
@@ -79,8 +79,8 @@ export default function Header() {
                 <Image
                   src={width < 768 ? burgerMenuIcon : arrowDownIcon}
                   alt='Развернуть меню'
-                  width={35}
-                  height={35}
+                  width={30}
+                  height={30}
                   className={cx({categories_icon: true, reversed: categoriesVisible && categoriesVisible !== null})}
                 />
               :
@@ -166,14 +166,14 @@ export default function Header() {
             target='_blank'
             className={styles.vk + ' ' + styles.button}
           >
-            <Image src={width > 768 ? vkIcon : vkBlueIcon} alt='ВКонтакте' width={30} height={30} />
+            <Image src={width > 768 ? vkIcon : vkBlueIcon} alt='ВКонтакте' width={25} height={25} />
             <span className={styles.vk_title}>Наша группа</span>
           </Link>
           <div
             className={styles.new_ad + ' ' + styles.button}
             onClick={createAd}
           >
-            <Image src={plusIcon} alt='Новое объявление' width={30} height={30} />
+            <Image src={plusIcon} alt='Новое объявление' width={25} height={25} />
             <span className={styles.new_ad_title}>Подать объявление</span>
           </div>
         </div>

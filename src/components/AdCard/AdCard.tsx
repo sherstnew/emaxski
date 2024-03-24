@@ -175,7 +175,7 @@ export default function AdCard(props: IAd) {
               height={30}
               alt='Иконка'
             />
-            <Link target='_blank' href={props.author_link}>{props.author_link}</Link>
+            <Link target='_blank' href={props.author_link}>{props.author_link.replace('https://', '')}</Link>
           </div>
         ) : (
           ''

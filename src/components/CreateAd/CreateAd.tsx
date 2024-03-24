@@ -187,7 +187,10 @@ export default function CreateAd() {
           onChange={(evt) => setPrice(evt.target.value)}
           value={price}
         />
-        <div className={cx({ photos: true, hidden: !createAdVisible })}>
+        {
+          files.length > 0
+          ?
+          <div className={cx({ photos: true, hidden: !createAdVisible })}>
           <header className={styles.photos_header}>Фотографии</header>
           <div className={styles.photos_gallery}>
             {files
@@ -204,22 +207,25 @@ export default function CreateAd() {
                 ))
               : ''}
           </div>
-          <div className={styles.photos_btns}>
-            <label className={styles.add_photo + ' ' + styles.button}>
-              <input
-                type='file'
-                className={styles.file_input}
-                onChange={handleFiles}
-                multiple
-                disabled={files.length >= 10}
-                accept="image/*"
-              />
-              Добавить фото
-            </label>
-            <button type="submit" className={styles.publish + ' ' + styles.button}>
-              Опубликовать
-            </button>
-          </div>
+        </div>
+        :
+        ''
+        }
+        <div className={styles.photos_btns}>
+          <label className={styles.add_photo + ' ' + styles.button}>
+            <input
+              type='file'
+              className={styles.file_input}
+              onChange={handleFiles}
+              multiple
+              disabled={files.length >= 10}
+              accept="image/*"
+            />
+            Добавить фото
+          </label>
+          <button type="submit" className={styles.publish + ' ' + styles.button}>
+            Опубликовать
+          </button>
         </div>
       </form>
 

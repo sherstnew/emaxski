@@ -30,17 +30,14 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  @media screen and (max-width: 700px) {
-    align-items: flex-start;
-    align-content: flex-start;
-  }
+  align-items: flex-end;
+  align-content: flex-end;
 }
 
 .show_contacts_btn {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap: nowrap;
   gap: 10px;
   background: none;
@@ -58,7 +55,7 @@
 .footer_right {
   display: flex;
   justify-content: flex-end;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap: nowrap;
   gap: 30px;
   @media screen and (max-width: 700px) {
@@ -156,4 +153,11 @@
   max-height: 90%;
   border-radius: 5px;
   outline: #ffffff 7px solid;
+}
+
+.contacts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }

@@ -68,6 +68,7 @@ export default function CreateAd() {
           setCategory('');
           setPrice('');
           setFiles([]);
+          setInvalidClass(false);
         }
       })
       .catch(err => {
@@ -79,32 +80,37 @@ export default function CreateAd() {
   };
 
   const handleFiles = (evt: ChangeEvent<HTMLInputElement>) => {
-    if (evt.target.files) {
-      const file = evt.target.files[0];
+    if (evt.target.files && files.length <= 10 && evt.target.files.length <= 10 && files.length + evt.target.files.length <= 10) {
+      const fileList = Array.from(evt.target.files);
+      let requests: Promise<IUploadeImageResponse>[] = [];
 
-      const extension = file.name.split('.').pop();
+      for (let i = 0; i < fileList.length; i++) {
+        const file = fileList[i];
+        const extension = file.name.split('.').pop();
 
-      let formData = new FormData();
-      formData.append('extension', extension || '');
-      formData.append('file', file);
+        let formData = new FormData();
+        formData.append('extension', extension || '');
+        formData.append('file', file);
 
-      fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/uploadImage`, {
-        method: 'POST',
-        headers: {
-          Authorization:
-            'Bearer 20bc39bb77ede5d1351c315037dfcbc6c8bff91624469900adda1ba9e93912fd',
-        },
-        body: formData,
+        requests.push(fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/uploadImage`, {
+          method: 'POST',
+          headers: {
+            Authorization:
+              'Bearer 20bc39bb77ede5d1351c315037dfcbc6c8bff91624469900adda1ba9e93912fd',
+          },
+          body: formData,
+        }).then(res => res.json()));
+      };
+
+      Promise.all(requests)
+      .then((data) => {
+        if (data) {
+          setFiles([...files, ...data.map(image => "static/" + image.filename)]);
+        };
       })
-        .then((res: any) => res.json())
-        .then((data: IUploadeImageResponse) => {
-          if (data) {
-            setFiles([...files, "static/" + data.filename]);
-          };
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      .catch((err) => {
+        console.log(err);
+      });
     }
   };
 
@@ -204,6 +210,9 @@ export default function CreateAd() {
                 type='file'
                 className={styles.file_input}
                 onChange={handleFiles}
+                multiple
+                disabled={files.length >= 10}
+                accept="image/*"
               />
               Добавить фото
             </label>

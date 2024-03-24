@@ -14,6 +14,9 @@ import { IAd } from '@/static/types/IAd';
 import Link from 'next/link';
 import classNames from 'classnames/bind';
 
+import vkIcon from '@/static/icons/vk-colored.svg';
+import tgIcon from '@/static/icons/telegram.svg';
+
 const cx = classNames.bind(styles);
 
 export default function AdCard(props: IAd) {
@@ -29,7 +32,10 @@ export default function AdCard(props: IAd) {
   return (
     <>
       {modalImageVisible ? (
-        <div className={styles.modal_image} onClick={() => setModalImageVisible(false)}>
+        <div
+          className={styles.modal_image}
+          onClick={() => setModalImageVisible(false)}
+        >
           <Image
             loader={() =>
               typeof imageIncreaseSrc == 'string' ? imageIncreaseSrc : ''
@@ -58,13 +64,25 @@ export default function AdCard(props: IAd) {
       )}
       <section className={styles.ad_card}>
         <section className={styles.ad_description}>{props.description}</section>
-        <section className={styles.ad_gallery} style={{'flexDirection': imagesLength === 3 ? 'column' : 'row', 'height': imagesLength === 3 ? window.innerWidth > 768 ? '700px' : '300px' : 'auto'}}>
+        <section
+          className={styles.ad_gallery}
+          style={{
+            flexDirection: imagesLength === 3 ? 'column' : 'row',
+            height:
+              imagesLength === 3
+                ? window.innerWidth > 768
+                  ? '700px'
+                  : '300px'
+                : 'auto',
+          }}
+        >
           {props.images
             ? props.images.map((image, index) => (
                 <Image
+                  unoptimized={true}
                   key={index}
                   loader={() => process.env.NEXT_PUBLIC_BASE_URL + '/' + image}
-                  src={process.env.NEXT_PUBLIC_BASE_URL+ '/' + image}
+                  src={process.env.NEXT_PUBLIC_BASE_URL + '/' + image}
                   alt='Фотография'
                   width={0}
                   height={0}
@@ -77,25 +95,28 @@ export default function AdCard(props: IAd) {
                     }
                   }}
                   style={
-                    imagesLength === 1 ? {'width': '25%', 'maxWidth': '50%', 'height': '100%'}
-                    :
-                    imagesLength === 2 ? {'width': '45%'}
-                    :
-                    imagesLength === 3 ? {
-                      'width': '50%',
-                      'height': index === 0 ? '100%' : '49%'
-                    }
-                    :
-                    imagesLength === 4 ? {
-                      'width': '49%',
-                      'maxHeight': '400px'
-                    }
-                    :
-                    imagesLength > 4 ? {
-                      'width': index < 2 ? '49%' : String(100 / (imagesLength - 2) - 5) + '%'
-                    }
-                    :
-                    {}
+                    imagesLength === 1
+                      ? { width: '25%', maxWidth: '50%', height: '100%' }
+                      : imagesLength === 2
+                      ? { width: '45%' }
+                      : imagesLength === 3
+                      ? {
+                          width: '50%',
+                          height: index === 0 ? '100%' : '49%',
+                        }
+                      : imagesLength === 4
+                      ? {
+                          width: '49%',
+                          maxHeight: '400px',
+                        }
+                      : imagesLength > 4
+                      ? {
+                          width:
+                            index < 2
+                              ? '49%'
+                              : String(100 / (imagesLength - 2) - 5) + '%',
+                        }
+                      : {}
                   }
                 />
               ))
@@ -141,7 +162,21 @@ export default function AdCard(props: IAd) {
           </div>
         </footer>
         {contactsVisible ? (
-          <div className={styles.contacts}>{props.author_link}</div>
+          <div className={styles.contacts}>
+            <Image
+              src={
+                props.author_platform === 'vk'
+                  ? vkIcon
+                  : props.author_platform === 'tg'
+                  ? tgIcon
+                  : ''
+              }
+              width={30}
+              height={30}
+              alt='Иконка'
+            />
+            <Link target='_blank' href={props.author_link}>{props.author_link}</Link>
+          </div>
         ) : (
           ''
         )}

@@ -60,7 +60,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={styles.header}>
+    <header className={styles.header} onMouseLeave={() => setCategoriesVisible(false)}>
       <div className={styles.menu}>
         <div className={styles.menu_left}>
           <Link href="/" className={styles.logo}>
@@ -71,6 +71,7 @@ export default function Header() {
             onClick={() =>
               setCategoriesVisible((categoriesVisible) => !categoriesVisible)
             }
+            onMouseEnter={() => setCategoriesVisible(true)}
           >
             <span className={styles.categories_title}>Категории объявлений</span>
             {
@@ -80,7 +81,7 @@ export default function Header() {
                   alt='Развернуть меню'
                   width={35}
                   height={35}
-                  className={cx({reversed: categoriesVisible && categoriesVisible !== null})}
+                  className={cx({categories_icon: true, reversed: categoriesVisible && categoriesVisible !== null})}
                 />
               :
               ''

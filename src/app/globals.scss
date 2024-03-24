@@ -20,6 +20,12 @@ body {
 }
 
 body {
+	display: flex;
+	justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+	flex-wrap: wrap;
+	gap: 20px;
   background-color: $background-color;
   color: $text-color;
 	overflow-y: hidden;
